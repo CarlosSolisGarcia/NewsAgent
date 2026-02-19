@@ -1,0 +1,12 @@
+# App
+streamlit>=1.28
+
+# Resumen con Ollama
+ollama>=0.3
+
+# Extracción de contenido de URLs
+trafilatura>=1.6
+
+# Fuentes RSS/Atom
+feedparser>=6.0
+python-dateutil>=2.8
