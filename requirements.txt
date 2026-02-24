@@ -10,3 +10,6 @@ trafilatura>=1.6
 # Fuentes RSS/Atom
 feedparser>=6.0
 python-dateutil>=2.8
+
+# Base de datos
+sqlalchemy>=2.0

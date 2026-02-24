@@ -19,15 +19,14 @@ def run_pipeline():
         for article in news_list:
             # CONTROL DE ERRORES: KeyError si article no tiene "link" (estructura de feed inesperada).
             url = article["link"]
-            # CONTROL DE ERRORES: extract_content(url) puede lanzar por red, URL inválida o trafilatura.
-            # Un solo artículo fallido rompe todo el pipeline. Considera try/except por artículo y
-            # marcar article["content"] = None o article["summary"] = "(error)" para seguir con el resto.
             article["content"] = extract_content(url)
-            summarized = summarize_article(
-                title=article["title"],
-                content=article["content"] or ""
-            )
-            article["title"] = summarized["title"]
-            article["summary"] = summarized["summary"]
+            
+            if article["content"]:
+                article["summary"] = summarize_article(
+                    title=article["title"],
+                    content=article["content"]
+                )
+            else:
+                article["summary"] = ""
 
     return news_list
